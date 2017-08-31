@@ -12,20 +12,43 @@ const cart =
     items
   })
 
+/**
+ * Curried functions that match items to their prices and return their price
+ */
 const listedPrice =
   listing =>
-    name =>
-      name === listing.name
-        ? listing.price
-        : 0
+    name => {
+      let matchedItem = listing.find(currentObject => currentObject.name === name)
+
+      if(matchedItem !== undefined) {
+        return matchedItem.price
+      } else {
+        return 0
+      }
+    }
 
 /**
- * transform carts into an array of { customer, total }
+ * Curried functions that process the carts using the listings
+ * and returns an array of objects with customers and totals
  */
 const calculateTotals =
   listings =>
     carts => {
-      // TODO
+      let resultArray = []
+
+      carts.forEach(cart => {
+        let cartTotal = 0
+
+        cart.items.forEach(item => {
+          cartTotal += listedPrice(listings)(item)
+        })
+        resultArray.push({
+          customer : cart.customer,
+          total : cartTotal
+        })
+      })
+
+      return resultArray
     }
 
 module.exports = {
