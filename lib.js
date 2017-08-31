@@ -13,7 +13,9 @@ const cart =
   })
 
 /**
- * @name listedPrice
+ * @function listedPrice
+ * @author Greg Hill
+ * @description finds the price of an item using the given listing and name of the item
  * @param listings the item/price pairs
  * @param name the name of the item we are trying to find the price of
  * @returns the price of the item or 0 is the item is not in the listing
@@ -25,9 +27,10 @@ const listedPrice =
       return (matchedItem !== undefined) ? matchedItem.price : 0
     }
 
-
 /**
- * @name calculateTotals
+ * @function calculateTotals
+ * @author Greg Hill
+ * @description calculates the total of each cart's items and returns each cart and its value as an array
  * @param listings the item/price pairs
  * @param carts an array of cart objects which contain the customer name and an array of items
  * @returns an array of objects with customers and totals based on the listings
