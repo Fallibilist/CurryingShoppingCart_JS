@@ -13,23 +13,24 @@ const cart =
   })
 
 /**
- * Curried functions that match items to their prices and return their price
+ * @name constructCarts
+ * @param listings the item/price pairs
+ * @param name the name of the item we are trying to find the price of
+ * @returns the price of the item or 0 is the item is not in the listing
  */
 const listedPrice =
   listing =>
     name => {
-      let matchedItem = listing.find(currentObject => currentObject.name === name)
-
-      if(matchedItem !== undefined) {
-        return matchedItem.price
-      } else {
-        return 0
-      }
+      const matchedItem = listing.find(currentObject => currentObject.name === name)
+      return (matchedItem !== undefined) ? matchedItem.price : 0
     }
 
+
 /**
- * Curried functions that process the carts using the listings
- * and returns an array of objects with customers and totals
+ * @name constructCarts
+ * @param listings the item/price pairs
+ * @param carts an array of cart objects which contain the customer name and an array of items
+ * @returns an array of objects with customers and totals based on the listings
  */
 const calculateTotals =
   listings =>
