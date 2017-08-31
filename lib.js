@@ -13,7 +13,7 @@ const cart =
   })
 
 /**
- * @name constructCarts
+ * @name listedPrice
  * @param listings the item/price pairs
  * @param name the name of the item we are trying to find the price of
  * @returns the price of the item or 0 is the item is not in the listing
@@ -27,7 +27,7 @@ const listedPrice =
 
 
 /**
- * @name constructCarts
+ * @name calculateTotals
  * @param listings the item/price pairs
  * @param carts an array of cart objects which contain the customer name and an array of items
  * @returns an array of objects with customers and totals based on the listings
